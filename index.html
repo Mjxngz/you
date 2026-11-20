@@ -40,8 +40,13 @@
     .label{color:#bd7b8d;font-size:.8rem;font-weight:bold;letter-spacing:.2em}
     h2{margin:8px 0;font-size:clamp(1.7rem,4vw,2.3rem)}
     .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:25px}
-    .card{padding:10px;border:1px solid #f4e1e5;border-radius:21px;background:#ffffffed;box-shadow:0 12px 32px #70465212;animation:appear .6s both;transition:transform .25s,box-shadow .25s}
-    .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 18px 36px #70465224}
+    .card{padding:11px 11px 15px;border:1px solid #f4e1e5;border-radius:18px;background:#ffffffed;box-shadow:0 12px 32px #70465212;animation:appear .6s both;transition:transform .25s,box-shadow .25s;position:relative}
+    .card:nth-child(3n+1){transform:rotate(-1deg)}.card:nth-child(3n+2){transform:rotate(.8deg)}
+    .card:hover{transform:translateY(-6px) rotate(0deg);box-shadow:0 18px 36px #70465224}
+    .photo-wrap{position:relative;overflow:hidden;border-radius:14px}
+    .photo-wrap:after{content:"♡";position:absolute;right:10px;bottom:8px;color:white;text-shadow:0 2px 8px #0008;font-size:1.2rem;pointer-events:none}
+    .caption{margin:13px 5px 4px;font-weight:600;text-align:center;line-height:1.65;min-height:1.6em}
+    .caption-date{display:block;margin-top:5px;color:#bd8796;font-size:.75rem;letter-spacing:.08em;font-weight:400}
     @keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
     .card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;cursor:zoom-in;background:#f8e7eb}
     .caption{margin:11px 5px 5px;font-weight:600}
@@ -52,7 +57,9 @@
     footer{padding:10px 0 38px;color:#b28c94;text-align:center}
     .lightbox{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:22px;background:#25191dcc;cursor:zoom-out}
     .lightbox.open{display:flex}
-    .lightbox img{max-width:min(92vw,1000px);max-height:85vh;object-fit:contain;border-radius:15px;box-shadow:0 15px 55px #0008}
+    .lightbox-content{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:95vw}
+    .lightbox img{max-width:min(92vw,1000px);max-height:78vh;object-fit:contain;border-radius:15px;box-shadow:0 15px 55px #0008}
+    #lightboxCaption{color:white;text-align:center;font-size:1.05rem;line-height:1.7;text-shadow:0 2px 8px #0008;max-width:800px}
     .lightbox button{position:absolute;top:18px;right:18px;background:white;color:#744956}
     @media(max-width:600px){header{font-size:.9rem}.hero{min-height:430px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
     @media(max-width:390px){.gallery{grid-template-columns:1fr}}
@@ -70,8 +77,8 @@
     <section class="hero">
       <div class="hero-inner">
         <div class="badge">✦ A LITTLE SURPRISE FOR YOU ✦</div>
-        <h1>สุขสันต์วันเกิด<span>คนพิเศษของเรา</span></h1>
-        <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณที่ทำให้ทุกวันพิเศษขึ้นนะ ♡</p>
+        <h1>สุขสันต์วันเกิด<span>Vida Rakbibi</span></h1>
+        <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณสำหรับทุกอย่างหนา♡</p>
         <button type="button" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">♡ เปิดกล่องความทรงจำ</button>
       </div>
     </section>
@@ -79,7 +86,7 @@
     <section class="section" id="memories">
       <div class="label">LITTLE MOMENTS</div>
       <h2>เรื่องราวของเรา 🌷</h2>
-      <p class="intro">รูปจะแสดงเมื่อใส่ไฟล์ไว้ในโฟลเดอร์ images และตั้งชื่อตามลำดับ</p>
+      <p class="intro">แต่ละภาพเก็บเรื่องราวเล็ก ๆ ที่อยากจำไว้ตลอดไป ✨<br>ใส่รูปในโฟลเดอร์ images แล้วเขียนคำบรรยายของแต่ละรูปได้ในโค้ด</p>
       <div class="gallery" id="gallery"></div>
     </section>
 
@@ -87,9 +94,9 @@
       <div style="font-size:2.4rem">💌</div>
       <div class="label">A LETTER FOR YOU</div>
       <h2>มีบางอย่างอยากบอก</h2>
-      <p>สุขสันต์วันเกิดนะ ขอบคุณที่ทำให้วันธรรมดาของเรากลายเป็นวันที่มีความหมาย<br>ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม เรื่องดี ๆ และความฝันที่ค่อย ๆ เป็นจริง</p>
-      <p>เราจะคอยอยู่ข้าง ๆ และรักเธอในทุกวันเลยนะ 🤍</p>
-      <p class="signature">รักเสมอ, คนของเธอ</p>
+      <p>สุขสันต์วันเกิดนะ มีความสุขมากๆ เงินทองไหลมาเทมา <br>ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม มีเเต่เรื่องดีๆเข้ามาตลอดไม่เคลียด</p>
+      <p>อยู่ข้างๆเสมอ มาช้าเเต่มานะ 🤍</p>
+      <p class="signature">รักที่สุด</p>
     </section>
 
     <section class="music-box">
@@ -102,15 +109,26 @@
     </section>
   </main>
 
-  <footer>ทำขึ้นด้วยความรัก เพื่อเธอคนเดียว ♡</footer>
+  <footer>MJ Lovely ♡</footer>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-label="แสดงรูปขนาดใหญ่">
     <button id="closeLightbox" type="button" aria-label="ปิด">✕ ปิด</button>
-    <img id="largeImage" alt="รูปขยาย">
+    <div class="lightbox-content"><img id="largeImage" alt="รูปขยาย"><div id="lightboxCaption"></div></div>
   </div>
 
   <script>
     const gallery = document.getElementById("gallery");
+
+    // แก้ข้อความใต้รูปตรงนี้ได้เลย (ลำดับตรงกับ photo1.jpg, photo2.jpg...)
+    // เว้นเป็น "" ได้ถ้าไม่ต้องการคำบรรยายรูปนั้น
+    const captions = [
+      "วันที่เราได้เจอกัน ♡",
+      "รอยยิ้มที่ทำให้ใจฟู",
+      "โมเมนต์ธรรมดาที่พิเศษ",
+      "อยากเก็บวันนี้ไว้นาน ๆ 🌷",
+      "ขอบคุณที่เข้ามาในชีวิต",
+      "ความสุขของเรา 🤍"
+    ];
 
     // ใส่ไฟล์ images/photo1.jpg ถึง images/photo40.jpg ได้
     for (let number = 1; number <= 40; number++) {
@@ -123,17 +141,23 @@
       image.alt = `ความทรงจำรูปที่ ${number}`;
       image.loading = "lazy";
 
+      const photoWrap = document.createElement("div");
+      photoWrap.className = "photo-wrap";
+      photoWrap.appendChild(image);
+
       const caption = document.createElement("p");
       caption.className = "caption";
-      caption.textContent = `ความทรงจำของเรา ♡`;
+      caption.textContent = captions[number - 1] || `ความทรงจำที่ ${number} ♡`;
+      if (caption.textContent.trim() === "") caption.hidden = true;
 
       image.addEventListener("error", () => card.remove());
       image.addEventListener("click", () => {
         document.getElementById("largeImage").src = image.src;
+        document.getElementById("lightboxCaption").textContent = caption.textContent;
         document.getElementById("lightbox").classList.add("open");
       });
 
-      card.append(image, caption);
+      card.append(photoWrap, caption);
       gallery.appendChild(card);
     }
 
@@ -141,6 +165,7 @@
     function closeLightbox() {
       lightbox.classList.remove("open");
       document.getElementById("largeImage").src = "";
+      document.getElementById("lightboxCaption").textContent = "";
     }
     document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", event => {
