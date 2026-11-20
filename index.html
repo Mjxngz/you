@@ -5,278 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ความทรงจำของเรา ♡</title>
   <style>
-    :root {
-      --rose: #cf718a;
-      --ink: #533c45;
-      --muted: #947a82;
-      --cream: #fff9f6;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 15% 20%, #ffe8ed, transparent 28rem),
-        radial-gradient(circle at 90% 45%, #fff0df, transparent 25rem),
-        var(--cream);
-      font-family: Arial, "Noto Sans Thai", sans-serif;
-    }
-    .float-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 5;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .floater {
-      position: absolute;
-      bottom: -55px;
-      left: var(--left);
-      font-size: var(--size);
-      opacity: 0;
-      animation: float-up var(--duration) linear var(--delay) infinite;
-      filter: drop-shadow(0 3px 6px #bd71851c);
-    }
-    @keyframes float-up {
-      0% { transform: translate(0, 0) rotate(0); opacity: 0; }
-      12% { opacity: .75; }
-      55% { transform: translate(28px, -55vh) rotate(150deg); }
-      88% { opacity: .6; }
-      100% { transform: translate(-20px, -112vh) rotate(320deg); opacity: 0; }
-    }
-    header, main, footer { width: min(1000px, 92%); margin: auto; }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 0;
-      color: #a85972;
-      font-weight: 700;
-    }
-    button {
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 19px;
-      color: white;
-      background: var(--rose);
-      font: inherit;
-      cursor: pointer;
-      box-shadow: 0 6px 18px #cf718a30;
-      transition: transform .2s, background .2s;
-    }
-    button:hover { transform: translateY(-2px); background: #b85f79; }
-    .top-button { padding: 10px 16px; background: white; color: #a85972; }
-    .hero {
-      min-height: 530px;
-      display: grid;
-      place-items: center;
-      padding: 55px 15px;
-      text-align: center;
-    }
-    .hero-inner { max-width: 720px; }
-    .eyebrow {
-      display: inline-block;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: #fce8ed;
-      color: #a65770;
-      letter-spacing: .08em;
-      font-size: .85rem;
-    }
-    h1 {
-      margin: 22px 0 14px;
-      font-size: clamp(2.7rem, 8vw, 5.4rem);
-      line-height: 1.17;
-    }
-    h1 span {
-      display: block;
-      color: var(--rose);
-      font-family: Georgia, serif;
-      font-style: italic;
-    }
-    .intro { color: var(--muted); line-height: 1.9; }
-    .section { padding: 42px 0 58px; }
-    .section-label {
-      color: #bd7b8d;
-      font-size: .8rem;
-      font-weight: bold;
-      letter-spacing: .2em;
-    }
-    h2 { margin: 8px 0; font-size: clamp(1.7rem, 4vw, 2.3rem); }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
-    }
-    .card {
-      padding: 11px;
-      border: 1px solid #f4e1e5;
-      border-radius: 22px;
-      background: #ffffffed;
-      box-shadow: 0 12px 34px #70465212;
-      transition: transform .25s, box-shadow .25s;
-    }
-    .card:hover {
-      transform: translateY(-5px) rotate(-.4deg);
-      box-shadow: 0 18px 36px #70465220;
-    }
-    .card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 15px;
-      background: #f8e7eb;
-    }
-    .caption { margin: 12px 5px 5px; font-weight: 600; }
-    .letter, .music-box {
-      margin: 18px 0 50px;
-      padding: clamp(25px, 6vw, 48px);
-      border: 1px solid #f3dfe2;
-      border-radius: 28px;
-      background: linear-gradient(135deg, #fff, #fff6f5);
-      box-shadow: 0 15px 40px #71455312;
-      text-align: center;
-    }
-    .letter p { color: #80666f; line-height: 2; }
-    .signature { color: #bd607c !important; font-weight: bold; }
-    #songStatus { min-height: 24px; color: var(--muted); font-size: .9rem; }
-    footer { padding: 10px 0 38px; color: #b28c94; text-align: center; }
-    @media (max-width: 600px) {
-      header { font-size: .9rem; }
-      .hero { min-height: 470px; }
-      .section { padding: 32px 0 45px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
-    }
+    :root{--pink:#d87992;--ink:#563e47;--muted:#917880;--cream:#fff9f6}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe5ec,transparent 28rem),radial-gradient(circle at 90% 40%,#fff0dc,transparent 26rem),var(--cream);font-family:Arial,"Noto Sans Thai",sans-serif}
+    .float-layer{position:fixed;inset:0;z-index:4;overflow:hidden;pointer-events:none}
+    .floater{position:absolute;left:var(--x);bottom:-60px;font-size:var(--size);opacity:0;animation:floatUp var(--time) linear var(--delay) infinite;filter:drop-shadow(0 3px 5px #c96e8525)}
+    @keyframes floatUp{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:.75}55%{transform:translate(25px,-55vh) rotate(150deg)}88%{opacity:.65}100%{transform:translate(-20px,-112vh) rotate(320deg);opacity:0}}
+    header,main,footer{width:min(1050px,92%);margin:auto}
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;color:#a85972;font-weight:bold}
+    button{border:0;border-radius:999px;padding:12px 19px;background:var(--pink);color:white;font:inherit;cursor:pointer;box-shadow:0 6px 18px #cf718a30;transition:.2s}
+    button:hover{transform:translateY(-2px);background:#b85f79}
+    .music-toggle{padding:10px 16px;background:white;color:#a85972}
+    .hero{min-height:500px;display:grid;place-items:center;text-align:center;padding:55px 15px}
+    .hero-inner{max-width:750px}
+    .badge{display:inline-block;padding:9px 16px;border-radius:999px;background:#fce8ed;color:#a65770;letter-spacing:.08em}
+    h1{margin:22px 0 14px;font-size:clamp(2.7rem,8vw,5.5rem);line-height:1.15}
+    h1 span{display:block;color:var(--pink);font-family:Georgia,serif;font-style:italic}
+    .intro{color:var(--muted);line-height:1.9}
+    .section{padding:35px 0 60px}
+    .label{color:#bd7b8d;font-size:.8rem;font-weight:bold;letter-spacing:.2em}
+    h2{margin:8px 0;font-size:clamp(1.7rem,4vw,2.3rem)}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:25px}
+    .card{padding:10px;border:1px solid #f4e1e5;border-radius:21px;background:#ffffffed;box-shadow:0 12px 32px #70465212;animation:appear .6s both;transition:transform .25s,box-shadow .25s}
+    .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 18px 36px #70465224}
+    @keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+    .card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;cursor:zoom-in;background:#f8e7eb}
+    .caption{margin:11px 5px 5px;font-weight:600}
+    .letter,.music-box{margin:20px 0 48px;padding:clamp(25px,6vw,48px);border:1px solid #f3dfe2;border-radius:28px;background:linear-gradient(135deg,#fff,#fff6f5);box-shadow:0 15px 40px #71455312;text-align:center}
+    .letter p{color:#80666f;line-height:2}
+    .signature{color:#bd607c!important;font-weight:bold}
+    #status{min-height:24px;color:var(--muted);font-size:.9rem}
+    footer{padding:10px 0 38px;color:#b28c94;text-align:center}
+    .lightbox{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:22px;background:#25191dcc;cursor:zoom-out}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:min(92vw,1000px);max-height:85vh;object-fit:contain;border-radius:15px;box-shadow:0 15px 55px #0008}
+    .lightbox button{position:absolute;top:18px;right:18px;background:white;color:#744956}
+    @media(max-width:600px){header{font-size:.9rem}.hero{min-height:430px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+    @media(max-width:390px){.gallery{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
   </style>
 </head>
 <body>
   <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
-
   <header>
     <div>♡ our little memories</div>
-    <button class="top-button" id="musicButton" type="button">♫ เปิดเพลง</button>
+    <button class="music-toggle" id="musicToggle" type="button">♫ เปิดเพลง</button>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-inner">
-        <div class="eyebrow">✦ A LITTLE SURPRISE FOR YOU ✦</div>
+        <div class="badge">✦ A LITTLE SURPRISE FOR YOU ✦</div>
         <h1>สุขสันต์วันเกิด<span>คนพิเศษของเรา</span></h1>
-        <p class="intro">รวมภาพ เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณที่ทำให้ทุกวันพิเศษขึ้นนะ ♡</p>
-        <button type="button" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">
-          ♡ เปิดกล่องความทรงจำ
-        </button>
+        <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณที่ทำให้ทุกวันพิเศษขึ้นนะ ♡</p>
+        <button type="button" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">♡ เปิดกล่องความทรงจำ</button>
       </div>
     </section>
 
     <section class="section" id="memories">
-      <div class="section-label">LITTLE MOMENTS</div>
+      <div class="label">LITTLE MOMENTS</div>
       <h2>เรื่องราวของเรา 🌷</h2>
-      <p class="intro">เพิ่มรูปของคุณในโฟลเดอร์ images แล้วใส่ชื่อไฟล์ในรายการรูปด้านล่าง</p>
+      <p class="intro">รูปจะแสดงเมื่อใส่ไฟล์ไว้ในโฟลเดอร์ images และตั้งชื่อตามลำดับ</p>
       <div class="gallery" id="gallery"></div>
     </section>
 
     <section class="letter">
-      <div style="font-size:2.5rem">💌</div>
-      <div class="section-label">A LETTER FOR YOU</div>
+      <div style="font-size:2.4rem">💌</div>
+      <div class="label">A LETTER FOR YOU</div>
       <h2>มีบางอย่างอยากบอก</h2>
-      <p>สุขสันต์วันเกิดนะ ขอบคุณที่ทำให้วันธรรมดาของเรากลายเป็นวันที่มีความหมาย<br>
-      ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม เรื่องดี ๆ และความฝันที่ค่อย ๆ เป็นจริง</p>
+      <p>สุขสันต์วันเกิดนะ ขอบคุณที่ทำให้วันธรรมดาของเรากลายเป็นวันที่มีความหมาย<br>ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม เรื่องดี ๆ และความฝันที่ค่อย ๆ เป็นจริง</p>
       <p>เราจะคอยอยู่ข้าง ๆ และรักเธอในทุกวันเลยนะ 🤍</p>
       <p class="signature">รักเสมอ, คนของเธอ</p>
     </section>
 
     <section class="music-box">
-      <div class="section-label">OUR SONG</div>
+      <div class="label">OUR SONG</div>
       <h2>เพลงที่อยากฟังไปด้วยกัน 🎵</h2>
-      <p class="intro">เพลงจะเล่นวนซ้ำเมื่อกดปุ่มเล่น</p>
+      <p class="intro">เพลงเล่นวนซ้ำได้ กดปุ่มเพื่อเริ่มฟัง</p>
       <button id="playButton" type="button">▶ เล่นเพลง</button>
-      <p id="songStatus">ใส่ไฟล์เพลงไว้ที่ music/song.mp3</p>
+      <p id="status">ใส่เพลงไว้ใน music/song.mp3</p>
       <audio id="song" src="music/song.mp3" loop preload="metadata"></audio>
     </section>
   </main>
 
   <footer>ทำขึ้นด้วยความรัก เพื่อเธอคนเดียว ♡</footer>
 
-  <script>
-    // เพิ่มรูปโดยวางไฟล์ไว้ในโฟลเดอร์ images และเพิ่มชื่อไฟล์ในรายการนี้
-    const photos = [
-      { file: "images/photo1.jpg", caption: "วันที่เราได้ใช้เวลาด้วยกัน ♡" },
-      { file: "images/photo2.jpg", caption: "รอยยิ้มของเธอ คือภาพโปรดของเรา" },
-      { file: "images/photo3.jpg", caption: "ขอบคุณที่อยู่ข้างกันเสมอ ✿" }
-    ];
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="แสดงรูปขนาดใหญ่">
+    <button id="closeLightbox" type="button" aria-label="ปิด">✕ ปิด</button>
+    <img id="largeImage" alt="รูปขยาย">
+  </div>
 
+  <script>
     const gallery = document.getElementById("gallery");
-    photos.forEach((photo) => {
+
+    // ใส่ไฟล์ images/photo1.jpg ถึง images/photo40.jpg ได้
+    for (let number = 1; number <= 40; number++) {
       const card = document.createElement("article");
       card.className = "card";
+      card.style.animationDelay = `${(number % 10) * 0.06}s`;
 
       const image = document.createElement("img");
-      image.src = photo.file;
-      image.alt = photo.caption;
-      image.onerror = () => {
-        image.style.display = "none";
-        const missing = document.createElement("div");
-        missing.style.cssText = "aspect-ratio:4/3;display:grid;place-items:center;color:#9b7b84;background:#f8e7eb;border-radius:15px;text-align:center;padding:15px";
-        missing.textContent = "เพิ่มไฟล์รูป: " + photo.file;
-        card.prepend(missing);
-      };
+      image.src = `images/photo${number}.jpg`;
+      image.alt = `ความทรงจำรูปที่ ${number}`;
+      image.loading = "lazy";
 
       const caption = document.createElement("p");
       caption.className = "caption";
-      caption.textContent = photo.caption;
+      caption.textContent = `ความทรงจำของเรา ♡`;
+
+      image.addEventListener("error", () => card.remove());
+      image.addEventListener("click", () => {
+        document.getElementById("largeImage").src = image.src;
+        document.getElementById("lightbox").classList.add("open");
+      });
+
       card.append(image, caption);
       gallery.appendChild(card);
+    }
+
+    const lightbox = document.getElementById("lightbox");
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.getElementById("largeImage").src = "";
+    }
+    document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeLightbox();
     });
 
-    const layer = document.getElementById("floatLayer");
-    const decorations = ["♡", "♥", "🌸", "✿", "❀", "🌷", "✨"];
-    for (let i = 0; i < 28; i++) {
+    const symbols = ["♡","♥","🌸","✿","❀","🌷","✨","💮"];
+    const floatLayer = document.getElementById("floatLayer");
+    for (let i = 0; i < 32; i++) {
       const item = document.createElement("span");
       item.className = "floater";
-      item.textContent = decorations[Math.floor(Math.random() * decorations.length)];
-      item.style.setProperty("--left", Math.random() * 100 + "%");
-      item.style.setProperty("--size", 16 + Math.random() * 20 + "px");
-      item.style.setProperty("--duration", 10 + Math.random() * 13 + "s");
-      item.style.setProperty("--delay", Math.random() * 20 + "s");
-      layer.appendChild(item);
+      item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      item.style.setProperty("--x", `${Math.random() * 100}%`);
+      item.style.setProperty("--size", `${15 + Math.random() * 20}px`);
+      item.style.setProperty("--time", `${11 + Math.random() * 13}s`);
+      item.style.setProperty("--delay", `${Math.random() * 20}s`);
+      floatLayer.appendChild(item);
     }
 
     const song = document.getElementById("song");
+    const status = document.getElementById("status");
     const playButton = document.getElementById("playButton");
-    const musicButton = document.getElementById("musicButton");
-    const songStatus = document.getElementById("songStatus");
+    const musicToggle = document.getElementById("musicToggle");
 
     async function toggleSong() {
       if (song.paused) {
         try {
           await song.play();
           playButton.textContent = "❚❚ หยุดเพลง";
-          musicButton.textContent = "♫ หยุดเพลง";
-          songStatus.textContent = "กำลังเล่นเพลงวนซ้ำ ♡";
+          musicToggle.textContent = "♫ หยุดเพลง";
+          status.textContent = "กำลังเล่นเพลงวนซ้ำ ♡";
         } catch {
-          songStatus.textContent = "ยังเล่นไม่ได้ ตรวจสอบว่ามีไฟล์ music/song.mp3 ใน GitHub แล้ว";
+          status.textContent = "เล่นไม่ได้ ตรวจสอบว่ามีไฟล์ music/song.mp3 บนอัปโหลด GitHub แล้ว";
         }
       } else {
         song.pause();
         playButton.textContent = "▶ เล่นเพลง";
-        musicButton.textContent = "♫ เปิดเพลง";
-        songStatus.textContent = "หยุดเพลงชั่วคราว";
+        musicToggle.textContent = "♫ เปิดเพลง";
+        status.textContent = "หยุดเพลงชั่วคราว";
       }
     }
-
     playButton.addEventListener("click", toggleSong);
-    musicButton.addEventListener("click", toggleSong);
+    musicToggle.addEventListener("click", toggleSong);
   </script>
 </body>
 </html>
