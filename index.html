@@ -8,10 +8,23 @@
     :root{--pink:#d87992;--ink:#563e47;--muted:#917880;--cream:#fff9f6}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe5ec,transparent 28rem),radial-gradient(circle at 90% 40%,#fff0dc,transparent 26rem),var(--cream);font-family:Arial,"Noto Sans Thai",sans-serif}
+    body{margin:0;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe5ec,transparent 28rem),radial-gradient(circle at 90% 40%,#fff0dc,transparent 26rem),radial-gradient(circle at 50% 100%,#fce8ef,transparent 34rem),var(--cream);font-family:Arial,"Noto Sans Thai",sans-serif}
     .float-layer{position:fixed;inset:0;z-index:4;overflow:hidden;pointer-events:none}
-    .floater{position:absolute;left:var(--x);bottom:-60px;font-size:var(--size);opacity:0;animation:floatUp var(--time) linear var(--delay) infinite;filter:drop-shadow(0 3px 5px #c96e8525)}
-    @keyframes floatUp{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:.75}55%{transform:translate(25px,-55vh) rotate(150deg)}88%{opacity:.65}100%{transform:translate(-20px,-112vh) rotate(320deg);opacity:0}}
+    .floater{position:absolute;left:var(--x);bottom:-12vh;font-size:var(--size);opacity:0;will-change:transform;animation:floatUp var(--time) linear var(--delay) infinite;filter:drop-shadow(0 4px 7px #c96e8530);user-select:none}
+    @keyframes floatUp{
+      0%{transform:translate3d(0,0,0) rotate(-18deg) scale(.75);opacity:0}
+      10%{opacity:var(--opacity)}
+      35%{transform:translate3d(var(--drift),-38vh,0) rotate(100deg) scale(1)}
+      68%{transform:translate3d(calc(var(--drift) * -0.55),-76vh,0) rotate(225deg) scale(.92);opacity:var(--opacity)}
+      100%{transform:translate3d(var(--drift),-118vh,0) rotate(360deg) scale(.7);opacity:0}
+    }
+    .floater.twinkle{animation-name:floatUp,twinkle;animation-duration:var(--time),2.4s;animation-delay:var(--delay),0s;animation-iteration-count:infinite,infinite}
+    @keyframes twinkle{0%,100%{filter:drop-shadow(0 2px 4px #eaa0b655)}50%{filter:drop-shadow(0 3px 12px #f5a5c9aa)}}
+    .hero{position:relative}
+    .hero-inner{position:relative;z-index:1}
+    .badge{box-shadow:0 5px 20px #e7a9b51c}
+    .letter,.music-box{backdrop-filter:blur(8px)}
+    ::selection{background:#f7cbd6;color:#714452}
     header,main,footer{width:min(1050px,92%);margin:auto}
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;color:#a85972;font-weight:bold}
     button{border:0;border-radius:999px;padding:12px 19px;background:var(--pink);color:white;font:inherit;cursor:pointer;box-shadow:0 6px 18px #cf718a30;transition:.2s}
@@ -137,16 +150,26 @@
       if (event.key === "Escape") closeLightbox();
     });
 
-    const symbols = ["♡","♥","🌸","✿","❀","🌷","✨","💮"];
+    // หัวใจ ดอกไม้ ผีเสื้อ และประกายวิบวับ ลอยขึ้นทั่วทั้งหน้าเว็บ
+    const symbols = [
+      "💗","💖","💕","💞","💘","♡","♥","ღ",
+      "🌸","🌷","🌺","🌼","🌻","🪷","💮","✿","❀","❁",
+      "🦋","✨","⭐","🌟","🍃","🌿","🩷","🌹"
+    ];
     const floatLayer = document.getElementById("floatLayer");
-    for (let i = 0; i < 32; i++) {
+
+    // สร้างหลายชั้นให้มีทั้งชิ้นเล็กไกล ๆ และชิ้นใหญ่ใกล้ ๆ
+    for (let i = 0; i < 105; i++) {
       const item = document.createElement("span");
-      item.className = "floater";
+      item.className = "floater" + (Math.random() > 0.72 ? " twinkle" : "");
       item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
       item.style.setProperty("--x", `${Math.random() * 100}%`);
-      item.style.setProperty("--size", `${15 + Math.random() * 20}px`);
-      item.style.setProperty("--time", `${11 + Math.random() * 13}s`);
-      item.style.setProperty("--delay", `${Math.random() * 20}s`);
+      item.style.setProperty("--size", `${12 + Math.random() * 23}px`);
+      item.style.setProperty("--time", `${13 + Math.random() * 19}s`);
+      item.style.setProperty("--delay", `${-Math.random() * 32}s`);
+      item.style.setProperty("--drift", `${-55 + Math.random() * 110}px`);
+      item.style.setProperty("--opacity", `${0.38 + Math.random() * 0.48}`);
+      item.style.zIndex = Math.random() > 0.82 ? "2" : "0";
       floatLayer.appendChild(item);
     }
 
