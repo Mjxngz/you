@@ -8,29 +8,18 @@
     :root{--pink:#d87992;--ink:#563e47;--muted:#917880;--cream:#fff9f6}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe5ec,transparent 28rem),radial-gradient(circle at 90% 40%,#fff0dc,transparent 26rem),radial-gradient(circle at 50% 100%,#fce8ef,transparent 34rem),var(--cream);font-family:Arial,"Noto Sans Thai",sans-serif}
-    .float-layer{position:fixed;inset:0;z-index:4;overflow:hidden;pointer-events:none}
-    .floater{position:absolute;left:var(--x);bottom:-12vh;font-size:var(--size);opacity:0;will-change:transform;animation:floatUp var(--time) linear var(--delay) infinite;filter:drop-shadow(0 4px 7px #c96e8530);user-select:none}
-    @keyframes floatUp{
-      0%{transform:translate3d(0,0,0) rotate(-18deg) scale(.75);opacity:0}
-      10%{opacity:var(--opacity)}
-      35%{transform:translate3d(var(--drift),-38vh,0) rotate(100deg) scale(1)}
-      68%{transform:translate3d(calc(var(--drift) * -0.55),-76vh,0) rotate(225deg) scale(.92);opacity:var(--opacity)}
-      100%{transform:translate3d(var(--drift),-118vh,0) rotate(360deg) scale(.7);opacity:0}
-    }
-    .floater.twinkle{animation-name:floatUp,twinkle;animation-duration:var(--time),2.4s;animation-delay:var(--delay),0s;animation-iteration-count:infinite,infinite}
-    @keyframes twinkle{0%,100%{filter:drop-shadow(0 2px 4px #eaa0b655)}50%{filter:drop-shadow(0 3px 12px #f5a5c9aa)}}
-    .hero{position:relative}
-    .hero-inner{position:relative;z-index:1}
-    .badge{box-shadow:0 5px 20px #e7a9b51c}
-    .letter,.music-box{backdrop-filter:blur(8px)}
-    ::selection{background:#f7cbd6;color:#714452}
+    body{margin:0;overflow-x:hidden;color:var(--ink);background:radial-gradient(circle at 12% 15%,#ffe5ec,transparent 28rem),radial-gradient(circle at 90% 40%,#fff0dc,transparent 26rem),var(--cream);font-family:Arial,"Noto Sans Thai",sans-serif}
+    button{font:inherit}
+    .float-layer{position:fixed;inset:0;z-index:3;overflow:hidden;pointer-events:none}
+    .floater{position:absolute;left:var(--x);bottom:-12vh;font-size:var(--size);opacity:0;animation:floatUp var(--time) linear var(--delay) infinite;filter:drop-shadow(0 4px 7px #c96e8530);user-select:none}
+    @keyframes floatUp{0%{transform:translate3d(0,0,0) rotate(-18deg) scale(.75);opacity:0}10%{opacity:.7}35%{transform:translate3d(var(--drift),-38vh,0) rotate(100deg) scale(1)}68%{transform:translate3d(calc(var(--drift)*-.55),-76vh,0) rotate(225deg) scale(.92);opacity:.7}100%{transform:translate3d(var(--drift),-118vh,0) rotate(360deg) scale(.7);opacity:0}}
     header,main,footer{width:min(1050px,92%);margin:auto}
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;color:#a85972;font-weight:bold}
-    button{border:0;border-radius:999px;padding:12px 19px;background:var(--pink);color:white;font:inherit;cursor:pointer;box-shadow:0 6px 18px #cf718a30;transition:.2s}
+    button{border:0;border-radius:999px;padding:12px 19px;background:var(--pink);color:white;cursor:pointer;box-shadow:0 6px 18px #cf718a30;transition:transform .2s,background .2s}
     button:hover{transform:translateY(-2px);background:#b85f79}
+    button:focus-visible{outline:3px solid #edb5c3;outline-offset:3px}
     .music-toggle{padding:10px 16px;background:white;color:#a85972}
-    .hero{min-height:500px;display:grid;place-items:center;text-align:center;padding:55px 15px}
+    .hero{min-height:480px;display:grid;place-items:center;text-align:center;padding:55px 15px}
     .hero-inner{max-width:750px}
     .badge{display:inline-block;padding:9px 16px;border-radius:999px;background:#fce8ed;color:#a65770;letter-spacing:.08em}
     h1{margin:22px 0 14px;font-size:clamp(2.7rem,8vw,5.5rem);line-height:1.15}
@@ -40,34 +29,45 @@
     .label{color:#bd7b8d;font-size:.8rem;font-weight:bold;letter-spacing:.2em}
     h2{margin:8px 0;font-size:clamp(1.7rem,4vw,2.3rem)}
     .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:25px}
-    .card{padding:11px 11px 15px;border:1px solid #f4e1e5;border-radius:18px;background:#ffffffed;box-shadow:0 12px 32px #70465212;animation:appear .6s both;transition:transform .25s,box-shadow .25s;position:relative}
-    .card:nth-child(3n+1){transform:rotate(-1deg)}.card:nth-child(3n+2){transform:rotate(.8deg)}
-    .card:hover{transform:translateY(-6px) rotate(0deg);box-shadow:0 18px 36px #70465224}
-    .photo-wrap{position:relative;overflow:hidden;border-radius:14px}
-    .photo-wrap:after{content:"♡";position:absolute;right:10px;bottom:8px;color:white;text-shadow:0 2px 8px #0008;font-size:1.2rem;pointer-events:none}
-    .caption{margin:13px 5px 4px;font-weight:600;text-align:center;line-height:1.65;min-height:1.6em}
-    .caption-date{display:block;margin-top:5px;color:#bd8796;font-size:.75rem;letter-spacing:.08em;font-weight:400}
+    .card{padding:10px;border:1px solid #f4e1e5;border-radius:21px;background:#ffffffed;box-shadow:0 12px 32px #70465212;animation:appear .6s both;transition:transform .25s,box-shadow .25s}
+    .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 18px 36px #70465224}
     @keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
     .card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;cursor:zoom-in;background:#f8e7eb}
     .caption{margin:11px 5px 5px;font-weight:600}
-    .letter,.music-box{margin:20px 0 48px;padding:clamp(25px,6vw,48px);border:1px solid #f3dfe2;border-radius:28px;background:linear-gradient(135deg,#fff,#fff6f5);box-shadow:0 15px 40px #71455312;text-align:center}
-    .letter p{color:#80666f;line-height:2}
-    .signature{color:#bd607c!important;font-weight:bold}
+    .letter-section,.music-box{margin:20px 0 48px;padding:clamp(25px,6vw,48px);border:1px solid #f3dfe2;border-radius:28px;background:linear-gradient(135deg,#fff,#fff6f5);box-shadow:0 15px 40px #71455312;text-align:center}
+    .letter-section .intro{margin-bottom:20px}
     #status{min-height:24px;color:var(--muted);font-size:.9rem}
     footer{padding:10px 0 38px;color:#b28c94;text-align:center}
-    .lightbox{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:22px;background:#25191dcc;cursor:zoom-out}
+
+    /* หน้าต่างจดหมายกระดาษกลางจอ */
+    .letter-overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:#35232dcc;backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+    .letter-overlay.open{opacity:1;visibility:visible}
+    .paper{position:relative;width:min(620px,94vw);max-height:min(82vh,760px);overflow:auto;padding:clamp(28px,7vw,58px);border-radius:5px 18px 8px 5px;background:repeating-linear-gradient(to bottom,#fffdf8 0,#fffdf8 34px,#f4e9e5 35px,#fffdf8 36px);box-shadow:0 28px 90px #160d1280;transform:translateY(55vh) rotate(5deg) scale(.78);opacity:0;transition:transform .8s cubic-bezier(.18,.85,.28,1),opacity .45s;transition-delay:.05s}
+    .letter-overlay.open .paper{transform:translateY(0) rotate(0) scale(1);opacity:1}
+    .paper:before{content:"";position:absolute;left:24px;top:0;bottom:0;width:1px;background:#efc7cf}
+    .paper:after{content:"♡";position:absolute;top:16px;right:22px;color:#e2a0af;font-size:25px}
+    .paper-content{position:relative;z-index:1;padding-left:10px}
+    .paper-date{color:#b67c89;font-size:.85rem;letter-spacing:.08em}
+    .paper h2{margin:14px 0 20px;color:#bd607c;font-family:Georgia,serif;font-size:clamp(1.7rem,6vw,2.4rem)}
+    .paper-message{color:#715961;line-height:2.05;font-size:1.05rem;white-space:pre-line}
+    .paper-signature{margin-top:24px;color:#bd607c;font-weight:bold;text-align:right}
+    .close-letter{position:fixed;top:18px;right:18px;width:46px;height:46px;padding:0;border-radius:50%;background:#fff;color:#8d5366;font-size:22px;box-shadow:0 5px 20px #0002}
+    .close-letter:hover{background:#fff0f3}
+    .spark{position:fixed;z-index:22;left:var(--left);top:var(--top);font-size:var(--size);pointer-events:none;animation:sparkFly 1.25s ease-out forwards}
+    @keyframes sparkFly{0%{opacity:0;transform:translate(0,0) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--turn)) scale(1.25)}}
+
+    .lightbox{position:fixed;inset:0;z-index:15;display:none;align-items:center;justify-content:center;padding:22px;background:#25191dcc;cursor:zoom-out}
     .lightbox.open{display:flex}
-    .lightbox-content{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:95vw}
-    .lightbox img{max-width:min(92vw,1000px);max-height:78vh;object-fit:contain;border-radius:15px;box-shadow:0 15px 55px #0008}
-    #lightboxCaption{color:white;text-align:center;font-size:1.05rem;line-height:1.7;text-shadow:0 2px 8px #0008;max-width:800px}
+    .lightbox img{max-width:min(92vw,1000px);max-height:85vh;object-fit:contain;border-radius:15px}
     .lightbox button{position:absolute;top:18px;right:18px;background:white;color:#744956}
-    @media(max-width:600px){header{font-size:.9rem}.hero{min-height:430px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+    @media(max-width:600px){header{font-size:.9rem}.hero{min-height:420px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.paper{max-height:78vh;padding:30px 27px}.paper:before{left:17px}.paper-content{padding-left:4px}.paper-message{font-size:.98rem}}
     @media(max-width:390px){.gallery{grid-template-columns:1fr}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
   <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
+
   <header>
     <div>♡ our little memories</div>
     <button class="music-toggle" id="musicToggle" type="button">♫ เปิดเพลง</button>
@@ -78,7 +78,7 @@
       <div class="hero-inner">
         <div class="badge">✦ A LITTLE SURPRISE FOR YOU ✦</div>
         <h1>สุขสันต์วันเกิด<span>Vida Rakbibi</span></h1>
-        <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณสำหรับทุกอย่างหนา♡</p>
+        <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ<br>ขอบคุณสำหรับทุกอย่างหนา ♡</p>
         <button type="button" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">♡ เปิดกล่องความทรงจำ</button>
       </div>
     </section>
@@ -86,16 +86,16 @@
     <section class="section" id="memories">
       <div class="label">LITTLE MOMENTS</div>
       <h2>เรื่องราวของเรา 🌷</h2>
+      <p class="intro">แต่ละภาพเก็บเรื่องราวเล็ก ๆ ที่อยากจำไว้ตลอดไป ✨</p>
       <div class="gallery" id="gallery"></div>
     </section>
 
-    <section class="letter">
-      <div style="font-size:2.4rem">💌</div>
+    <section class="letter-section">
+      <div style="font-size:2.3rem">💌</div>
       <div class="label">A LETTER FOR YOU</div>
       <h2>มีบางอย่างอยากบอก</h2>
-      <p>สุขสันต์วันเกิดนะ มีความสุขมากๆ เงินทองไหลมาเทมา <br>ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม มีเเต่เรื่องดีๆเข้ามาตลอดไม่เคลียด</p>
-      <p>อยู่ข้างๆเสมอ มาช้าเเต่มานะ 🤍</p>
-      <p class="signature">รักที่สุด</p>
+      <p class="intro">กดปุ่มเพื่อเปิดอ่านข้อความจากใจ 💗</p>
+      <button id="openLetter" type="button">💌 เปิดจดหมาย</button>
     </section>
 
     <section class="music-box">
@@ -110,16 +110,28 @@
 
   <footer>MJ Lovely ♡</footer>
 
+  <div class="letter-overlay" id="letterOverlay" aria-hidden="true">
+    <button class="close-letter" id="closeLetter" type="button" aria-label="ปิดจดหมาย">×</button>
+    <article class="paper" role="dialog" aria-modal="true" aria-labelledby="paperTitle">
+      <div class="paper-content">
+        <div class="paper-date">A LITTLE LETTER FOR YOU · ♡</div>
+        <h2 id="paperTitle">ตั้งใจอ่านหนา</h2>
+        <div class="paper-message" id="letterMessage">สุขสันต์วันเกิดนะ มีความสุขมาก ๆ เงินทองไหลมาเทมา
+ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม มีแต่เรื่องดี ๆ เข้ามาตลอด ไม่เครียดนะ
+
+อยู่ข้าง ๆ เสมอ มาช้าแต่มานะ 🤍</div>
+        <div class="paper-signature">รักที่สุด ♡</div>
+      </div>
+    </article>
+  </div>
+
   <div class="lightbox" id="lightbox" role="dialog" aria-label="แสดงรูปขนาดใหญ่">
-    <button id="closeLightbox" type="button" aria-label="ปิด">✕ ปิด</button>
-    <div class="lightbox-content"><img id="largeImage" alt="รูปขยาย"><div id="lightboxCaption"></div></div>
+    <button id="closeLightbox" type="button">✕ ปิด</button>
+    <div><img id="largeImage" alt="รูปขยาย"><div id="lightboxCaption"></div></div>
   </div>
 
   <script>
     const gallery = document.getElementById("gallery");
-
-    // แก้ข้อความใต้รูปตรงนี้ได้เลย (ลำดับตรงกับ photo1.jpg, photo2.jpg...)
-    // เว้นเป็น "" ได้ถ้าไม่ต้องการคำบรรยายรูปนั้น
     const captions = [
       "มองทำไมรึ🤔",
       "เลี้ยงช้างกัน😊",
@@ -141,10 +153,8 @@
       "เต้นกัน🤭",
       "รูปครอบครัว🥺",
       "นอนกุับลูก🫣"
-
     ];
 
-    // ใส่ไฟล์ images/photo1.jpg ถึง images/photo40.jpg ได้
     for (let number = 1; number <= 40; number++) {
       const card = document.createElement("article");
       card.className = "card";
@@ -152,17 +162,12 @@
 
       const image = document.createElement("img");
       image.src = `images/photo${number}.jpg`;
-      image.alt = `ความทรงจำรูปที่ ${number}`;
+      image.alt = captions[number - 1] || `ความทรงจำรูปที่ ${number}`;
       image.loading = "lazy";
-
-      const photoWrap = document.createElement("div");
-      photoWrap.className = "photo-wrap";
-      photoWrap.appendChild(image);
 
       const caption = document.createElement("p");
       caption.className = "caption";
-      caption.textContent = captions[number - 1] || `ความทรงจำที่ ${number} ♡`;
-      if (caption.textContent.trim() === "") caption.hidden = true;
+      caption.textContent = captions[number - 1] || "ความทรงจำของเรา ♡";
 
       image.addEventListener("error", () => card.remove());
       image.addEventListener("click", () => {
@@ -171,9 +176,66 @@
         document.getElementById("lightbox").classList.add("open");
       });
 
-      card.append(photoWrap, caption);
+      card.append(image, caption);
       gallery.appendChild(card);
     }
+
+    const symbols = ["💗","💖","💕","♡","♥","🌸","🌷","🌺","🌼","🦋","✨","🍃","🌹"];
+    const floatLayer = document.getElementById("floatLayer");
+    for (let i = 0; i < 28; i++) {
+      const item = document.createElement("span");
+      item.className = "floater";
+      item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      item.style.setProperty("--x", `${Math.random() * 100}%`);
+      item.style.setProperty("--size", `${16 + Math.random() * 20}px`);
+      item.style.setProperty("--time", `${11 + Math.random() * 13}s`);
+      item.style.setProperty("--delay", `${Math.random() * 20}s`);
+      item.style.setProperty("--drift", `${Math.floor(Math.random() * 100 - 50)}px`);
+      floatLayer.appendChild(item);
+    }
+
+    const overlay = document.getElementById("letterOverlay");
+    const openLetterButton = document.getElementById("openLetter");
+    const closeLetterButton = document.getElementById("closeLetter");
+
+    function makeSparkles() {
+      const pieces = ["💗","💕","🌸","✨","♡","💖","🌷"];
+      pieces.forEach((symbol, index) => {
+        const spark = document.createElement("span");
+        spark.className = "spark";
+        spark.textContent = symbol;
+        spark.style.setProperty("--left", `${45 + Math.random() * 10}%`);
+        spark.style.setProperty("--top", `${45 + Math.random() * 10}%`);
+        spark.style.setProperty("--size", `${18 + Math.random() * 16}px`);
+        spark.style.setProperty("--dx", `${Math.random() * 300 - 150}px`);
+        spark.style.setProperty("--dy", `${-80 - Math.random() * 180}px`);
+        spark.style.setProperty("--turn", `${Math.random() * 100 - 50}deg`);
+        spark.style.animationDelay = `${index * 45}ms`;
+        document.body.appendChild(spark);
+        spark.addEventListener("animationend", () => spark.remove());
+      });
+    }
+
+    function showLetter() {
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeLetterButton.focus();
+      makeSparkles();
+    }
+
+    function hideLetter() {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      openLetterButton.focus();
+    }
+
+    openLetterButton.addEventListener("click", showLetter);
+    closeLetterButton.addEventListener("click", hideLetter);
+    overlay.addEventListener("click", event => {
+      if (event.target === overlay) hideLetter();
+    });
 
     const lightbox = document.getElementById("lightbox");
     function closeLightbox() {
@@ -185,32 +247,13 @@
     lightbox.addEventListener("click", event => {
       if (event.target === lightbox) closeLightbox();
     });
+
     document.addEventListener("keydown", event => {
-      if (event.key === "Escape") closeLightbox();
+      if (event.key === "Escape") {
+        if (overlay.classList.contains("open")) hideLetter();
+        closeLightbox();
+      }
     });
-
-    // หัวใจ ดอกไม้ ผีเสื้อ และประกายวิบวับ ลอยขึ้นทั่วทั้งหน้าเว็บ
-    const symbols = [
-      "💗","💖","💕","💞","💘","♡","♥","ღ",
-      "🌸","🌷","🌺","🌼","🌻","🪷","💮","✿","❀","❁",
-      "🦋","✨","⭐","🌟","🍃","🌿","🩷","🌹"
-    ];
-    const floatLayer = document.getElementById("floatLayer");
-
-    // สร้างหลายชั้นให้มีทั้งชิ้นเล็กไกล ๆ และชิ้นใหญ่ใกล้ ๆ
-    for (let i = 0; i < 105; i++) {
-      const item = document.createElement("span");
-      item.className = "floater" + (Math.random() > 0.72 ? " twinkle" : "");
-      item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      item.style.setProperty("--x", `${Math.random() * 100}%`);
-      item.style.setProperty("--size", `${12 + Math.random() * 23}px`);
-      item.style.setProperty("--time", `${13 + Math.random() * 19}s`);
-      item.style.setProperty("--delay", `${-Math.random() * 32}s`);
-      item.style.setProperty("--drift", `${-55 + Math.random() * 110}px`);
-      item.style.setProperty("--opacity", `${0.38 + Math.random() * 0.48}`);
-      item.style.zIndex = Math.random() > 0.82 ? "2" : "0";
-      floatLayer.appendChild(item);
-    }
 
     const song = document.getElementById("song");
     const status = document.getElementById("status");
@@ -225,7 +268,7 @@
           musicToggle.textContent = "♫ หยุดเพลง";
           status.textContent = "กำลังเล่นเพลงวนซ้ำ ♡";
         } catch {
-          status.textContent = "เล่นไม่ได้ ตรวจสอบว่ามีไฟล์ music/song.mp3 บนอัปโหลด GitHub แล้ว";
+          status.textContent = "เล่นไม่ได้ ตรวจสอบว่ามีไฟล์ music/song.mp3";
         }
       } else {
         song.pause();
