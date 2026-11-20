@@ -2,339 +2,220 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ของขวัญเล็ก ๆ สำหรับคนพิเศษ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ความทรงจำของเรา ♡</title>
   <style>
-    :root {
-      --pink: #d87992;
-      --rose: #b85f79;
-      --cream: #fff9f6;
-      --ink: #513b43;
-      --muted: #927780;
-    }
-
     * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      overflow-x: hidden;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 15%, #ffe8ec 0, transparent 27rem),
-        radial-gradient(circle at 90% 38%, #fff0dc 0, transparent 25rem),
-        var(--cream);
-      font-family: "Trebuchet MS", "Noto Sans Thai", sans-serif;
+      min-height: 100vh;
+      color: #563d46;
+      background: linear-gradient(140deg, #fff8f5, #ffeaf0);
+      font-family: Arial, "Noto Sans Thai", sans-serif;
     }
-
-    button { font: inherit; }
-
-    .float-layer {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .float-item {
-      position: absolute;
-      bottom: -70px;
-      left: var(--left);
-      font-size: var(--size);
-      opacity: 0;
-      animation: floatUp var(--duration) linear var(--delay) infinite;
-      filter: drop-shadow(0 3px 5px #d8799225);
-    }
-
-    @keyframes floatUp {
-      0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
-      12% { opacity: .72; }
-      55% { transform: translate3d(35px, -55vh, 0) rotate(150deg); }
-      88% { opacity: .58; }
-      100% { transform: translate3d(-24px, -112vh, 0) rotate(310deg); opacity: 0; }
-    }
-
-    .topbar {
-      position: relative;
-      z-index: 2;
-      max-width: 1120px;
-      margin: auto;
-      padding: 22px 24px;
+    header, main, footer { width: min(950px, 92%); margin: auto; }
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 22px 0;
+      color: #b85f79;
+      font-weight: bold;
     }
-
-    .brand { color: var(--rose); font-weight: 700; letter-spacing: .04em; }
-
-    .music-button, .main-button {
-      border: 0;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
+    .hero { padding: 70px 15px 55px; text-align: center; }
+    .hero small { color: #b85f79; letter-spacing: 3px; }
+    h1 { margin: 18px 0; font-size: clamp(38px, 8vw, 68px); }
+    h1 span { display: block; color: #d87992; font-family: Georgia, serif; font-style: italic; }
+    .intro { color: #8b7079; line-height: 1.8; }
+    h2 { margin-bottom: 8px; }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0;
     }
-
-    .music-button {
-      padding: 11px 17px;
-      color: var(--rose);
-      background: #fff;
-      box-shadow: 0 5px 20px #8d586315;
-    }
-
-    .music-button:hover, .main-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px #b85f7930;
-    }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 610px;
-      padding: 75px 22px 60px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-    }
-
-    .hero-inner { max-width: 760px; }
-
-    .eyebrow {
+    .button, label.button {
       display: inline-block;
-      padding: 9px 16px;
-      border-radius: 999px;
-      background: #fce8ed;
-      color: #a65770;
-      font-size: .88rem;
-      letter-spacing: .08em;
-    }
-
-    h1 {
-      margin: 23px 0 14px;
-      font-size: clamp(2.8rem, 8vw, 5.8rem);
-      line-height: 1.12;
-      font-weight: 700;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--pink);
-      font-family: Georgia, serif;
-      font-style: italic;
-    }
-
-    .hero p {
-      max-width: 570px;
-      margin: 20px auto 0;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 1.05rem;
-    }
-
-    .main-button {
-      margin-top: 30px;
-      padding: 14px 24px;
+      border: 0;
+      border-radius: 30px;
+      padding: 12px 19px;
       color: white;
-      background: linear-gradient(135deg, #df8ba0, #c86e88);
-      box-shadow: 0 8px 22px #d8799240;
+      background: #d87992;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 5px 15px #d8799230;
     }
-
-    .section {
-      position: relative;
-      z-index: 1;
-      max-width: 1120px;
-      margin: auto;
-      padding: 60px 24px;
-    }
-
-    .section-heading { margin-bottom: 25px; }
-
-    .section-heading small {
-      color: #bd7b8d;
-      letter-spacing: .18em;
-      font-weight: 700;
-    }
-
-    h2 { margin: 8px 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
-
-    .subheading { margin: 0; color: var(--muted); }
-
+    .button:hover, label.button:hover { background: #bd607c; }
+    input[type="file"] { display: none; }
+    #songName, #message { color: #8b7079; font-size: 14px; }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin: 22px 0 60px;
     }
-
     .photo-card {
-      padding: 11px;
-      border: 1px solid #f5e6e8;
-      border-radius: 22px;
-      background: #ffffffdc;
-      box-shadow: 0 12px 35px #71455310;
-      transition: transform .25s, box-shadow .25s;
+      overflow: hidden;
+      border: 1px solid #f4dfe4;
+      border-radius: 20px;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 10px 28px #724b5712;
     }
-
-    .photo-card:hover {
-      transform: translateY(-5px) rotate(-.5deg);
-      box-shadow: 0 18px 38px #7145531b;
-    }
-
     .photo-card img {
       display: block;
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
-      border-radius: 15px;
-      background: #f7e7e9;
+      border-radius: 13px;
+      background: #f8e7eb;
     }
-
-    .photo-card p { margin: 12px 5px 5px; font-weight: 600; }
-
-    .letter-wrap { padding: 20px 24px 65px; }
-
-    .letter {
-      max-width: 850px;
-      margin: auto;
-      padding: clamp(28px, 6vw, 58px);
-      border: 1px solid #f3dfe2;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #fff, #fff7f5);
-      box-shadow: 0 15px 45px #71455312;
+    .photo-card p { margin: 12px 5px 6px; }
+    .empty {
+      grid-column: 1 / -1;
+      padding: 35px 15px;
+      border: 2px dashed #e9b9c5;
+      border-radius: 18px;
+      color: #9b7b84;
       text-align: center;
     }
-
-    .letter-icon { font-size: 2.4rem; }
-
-    .letter p {
-      color: #80666f;
-      line-height: 2;
-      font-size: 1.04rem;
+    footer { padding: 20px 0 40px; color: #b28c94; text-align: center; }
+    .float {
+      position: fixed;
+      z-index: -1;
+      bottom: -40px;
+      animation: rise 12s linear infinite;
+      opacity: .55;
+      pointer-events: none;
     }
-
-    .signature { color: var(--rose) !important; font-weight: 700; }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 30px 20px 45px;
-      color: #b28c94;
-      text-align: center;
-      font-size: .9rem;
+    @keyframes rise {
+      from { transform: translateY(0) rotate(0); opacity: 0; }
+      15% { opacity: .6; }
+      to { transform: translateY(-110vh) rotate(300deg); opacity: 0; }
     }
-
-    @media (max-width: 760px) {
-      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
-      .hero { min-height: 540px; }
-      .section { padding: 45px 18px; }
-    }
-
-    @media (max-width: 460px) {
-      .gallery { grid-template-columns: 1fr; }
-      .topbar { padding: 17px; }
-      .brand { font-size: .9rem; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
+      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
-  <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
-
-  <header class="topbar">
-    <div class="brand">♡ our little memories</div>
-    <button class="music-button" id="musicButton" type="button">♫ เปิดเพลง</button>
+  <header>
+    <div>♡ our little memories</div>
+    <div>🎂 สุขสันต์วันเกิด</div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <div class="eyebrow">✦ a little surprise for you ✦</div>
-        <h1>สุขสันต์วันเกิด<span>คนพิเศษของเรา</span></h1>
-        <p>วันนี้มีของขวัญชิ้นเล็ก ๆ ที่เก็บเรื่องราวของเราไว้เต็มหัวใจ พร้อมเปิดไปด้วยกันหรือยัง?</p>
-        <button class="main-button" type="button" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">
-          ♡ เปิดกล่องความทรงจำ
-        </button>
+      <small>A LITTLE SURPRISE FOR YOU</small>
+      <h1>สุขสันต์วันเกิด<span>คนพิเศษของเรา</span></h1>
+      <p class="intro">รวมรูป เพลง และความทรงจำดี ๆ ที่อยากเก็บไว้ให้เธอ ♡</p>
+    </section>
+
+    <section>
+      <h2>📷 รูปความทรงจำของเรา</h2>
+      <p class="intro">เลือกเพิ่มรูปจากในเครื่องได้หลายรูป</p>
+      <div class="controls">
+        <label class="button" for="photoInput">＋ เพิ่มรูป</label>
+        <input id="photoInput" type="file" accept="image/*" multiple>
+      </div>
+      <div id="gallery" class="gallery">
+        <div class="empty">กด “เพิ่มรูป” เพื่อเลือกรูปจากเครื่องของคุณ 🌷</div>
       </div>
     </section>
 
-    <section class="section" id="memories">
-      <div class="section-heading">
-        <small>LITTLE MOMENTS</small>
-        <h2>เรื่องราวของเรา</h2>
-        <p class="subheading">ทุกภาพมีความทรงจำซ่อนอยู่เสมอ</p>
+    <section>
+      <h2>🎵 เพลงของเรา</h2>
+      <p class="intro">เลือกเพลงหนึ่งเพลง แล้วกดเล่น เพลงจะวนซ้ำให้ค่ะ</p>
+      <div class="controls">
+        <label class="button" for="musicInput">เลือกเพลง</label>
+        <input id="musicInput" type="file" accept="audio/*">
+        <button id="playButton" class="button" type="button">▶ เล่นเพลง</button>
       </div>
-
-      <div class="gallery">
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85" alt="คู่รักใช้เวลาด้วยกัน">
-          <p>วันที่เราได้ใช้เวลาด้วยกัน ♡</p>
-        </article>
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85" alt="ช่วงเวลาที่มีความสุข">
-          <p>รอยยิ้มของเธอ คือภาพโปรดของเรา</p>
-        </article>
-        <article class="photo-card">
-          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85" alt="ความทรงจำของคนพิเศษ">
-          <p>ขอบคุณที่อยู่ข้างกันเสมอ ✿</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="letter-wrap">
-      <div class="letter">
-        <div class="letter-icon">💌</div>
-        <small class="eyebrow">A LETTER FOR YOU</small>
-        <h2>มีบางอย่างอยากบอก</h2>
-        <p>สุขสันต์วันเกิดนะ ขอบคุณที่ทำให้วันธรรมดาของเรากลายเป็นวันที่มีความหมาย ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม เรื่องดี ๆ และความฝันที่ค่อย ๆ เป็นจริง</p>
-        <p>เราจะคอยอยู่ข้าง ๆ และรักเธอในทุกวันเลยนะ 🤍</p>
-        <p class="signature">รักเสมอ, คนของเธอ</p>
-      </div>
+      <p id="songName">ยังไม่ได้เลือกเพลง</p>
+      <p id="message"></p>
+      <audio id="player" loop></audio>
     </section>
   </main>
 
   <footer>ทำขึ้นด้วยความรัก เพื่อเธอคนเดียว ♡</footer>
 
-  <audio id="birthdaySong" src="music/song.mp3" loop preload="none"></audio>
-
   <script>
-    const floatLayer = document.getElementById("floatLayer");
-    const symbols = ["♡", "♥", "🌸", "✿", "❀", "💮"];
+    const photoInput = document.getElementById("photoInput");
+    const musicInput = document.getElementById("musicInput");
+    const gallery = document.getElementById("gallery");
+    const player = document.getElementById("player");
+    const playButton = document.getElementById("playButton");
+    const songName = document.getElementById("songName");
+    const message = document.getElementById("message");
 
-    for (let i = 0; i < 24; i++) {
-      const item = document.createElement("span");
-      item.className = "float-item";
-      item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      item.style.setProperty("--left", `${Math.random() * 100}%`);
-      item.style.setProperty("--size", `${16 + Math.random() * 20}px`);
-      item.style.setProperty("--duration", `${10 + Math.random() * 12}s`);
-      item.style.setProperty("--delay", `${Math.random() * 18}s`);
-      floatLayer.appendChild(item);
-    }
+    photoInput.addEventListener("change", (event) => {
+      const files = Array.from(event.target.files || []);
+      if (!files.length) return;
 
-    const song = document.getElementById("birthdaySong");
-    const musicButton = document.getElementById("musicButton");
+      gallery.querySelector(".empty")?.remove();
 
-    musicButton.addEventListener("click", async () => {
-      if (song.paused) {
+      files.forEach((file) => {
+        if (!file.type.startsWith("image/")) return;
+
+        const card = document.createElement("article");
+        card.className = "photo-card";
+
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(file);
+        image.alt = file.name;
+
+        const caption = document.createElement("p");
+        caption.textContent = "ช่วงเวลาที่อยากเก็บไว้ ♡";
+
+        card.append(image, caption);
+        gallery.appendChild(card);
+      });
+
+      photoInput.value = "";
+    });
+
+    musicInput.addEventListener("change", (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      player.src = URL.createObjectURL(file);
+      player.loop = true;
+      songName.textContent = "เพลงที่เลือก: " + file.name;
+      message.textContent = "เลือกเพลงแล้ว กด “เล่นเพลง” เพื่อเริ่มฟังนะ";
+      playButton.textContent = "▶ เล่นเพลง";
+    });
+
+    playButton.addEventListener("click", async () => {
+      if (!player.src) {
+        message.textContent = "กรุณาเลือกไฟล์เพลงก่อนนะ";
+        return;
+      }
+
+      if (player.paused) {
         try {
-          await song.play();
-          musicButton.textContent = "♫ ปิดเพลง";
+          await player.play();
+          playButton.textContent = "❚❚ หยุดเพลง";
+          message.textContent = "";
         } catch {
-          musicButton.textContent = "เพิ่มไฟล์เพลงก่อนนะ";
+          message.textContent = "เล่นเพลงไม่ได้ ลองเลือกไฟล์เพลงใหม่อีกครั้งนะ";
         }
       } else {
-        song.pause();
-        musicButton.textContent = "♫ เปิดเพลง";
+        player.pause();
+        playButton.textContent = "▶ เล่นเพลง";
       }
     });
+
+    const decorations = ["♡", "🌸", "✿", "♥"];
+    for (let i = 0; i < 18; i++) {
+      const item = document.createElement("span");
+      item.className = "float";
+      item.textContent = decorations[Math.floor(Math.random() * decorations.length)];
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.animationDelay = Math.random() * 12 + "s";
+      item.style.animationDuration = 9 + Math.random() * 9 + "s";
+      item.style.fontSize = 16 + Math.random() * 17 + "px";
+      document.body.appendChild(item);
+    }
   </script>
 </body>
 </html>
